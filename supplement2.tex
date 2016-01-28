@@ -1,0 +1,23 @@
+\begin{proof}
+Outline: the proof proceeds by finding a lower bound for the objective function in (\ref{proxG}) and then we show that the proposed solution achieves this lower bound.
+
+First, note that the following is true for any $\bB$ and $\bV$,
+\begin{align*}\label{eqn1}
+\|\bB - \bV\|_F^2 &= \sum_{i=1}^p\|\bbeta_{i \a} - \bv_{i \a}\|^2 \\
+ \geq \sum_{i=1}^p&(\|\bbeta_{i \a}\| - \|\bv_{i \a}\|)^2 = \|\tilde{\bbeta} - \tilde{\bv}\|^2
+\end{align*}
+where the inequality follows from reverse triangle inequality. 
+
+Combining this with $G(\bB) = \Omega_{\bw}(\tilde{\bbeta})$, we have a lower bound on the objective function in ($\ref{proxG}$). For all $\bB \in \R^{p \times r}$
+\begin{align*}
+\frac{1}{2}\|\bB - \bV\|_F^2 + G(\bB)
+&\geq \frac{1}{2} \|\textnormal{prox}_{\Omega_{\bw}}(\tilde{\bv}) -  \tilde{\bv}\|^2 + \Omega_{\bw}(\textnormal{prox}_{\Omega_{\bw}}(\tilde{\bv})) 
+\end{align*}
+
+Finally, we show that $\bB = \widehat \bV$ achieves this lower bound,
+\begin{align*}
+&\frac{1}{2}\|\widehat \bV - \bV\|_F^2 + G(\widehat \bV) \\
+& = \frac{1}{2} \sum_{i = 1}^p \|(\textnormal{prox}_{\Omega_{\bw}}(\tilde{\bv}))_i \frac{\bv_{i \a}}{\|\bv_{i \a}\|} - \bv_{i \a}\|^2_2 + \Omega_{\bw}(\textnormal{prox}_{\Omega_{\bw}}(\tilde{\bv})) \\
+ & = \frac{1}{2} \|\textnormal{prox}_{\Omega_{\bw}}(\tilde{\bv}) -  \tilde{\bv}\|^2_2 + \Omega_{\bw}(\textnormal{prox}_{\Omega_{\bw}}(\tilde{\bv})) 
+\end{align*}
+\end{proof}

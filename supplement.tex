@@ -1,0 +1,42 @@
+In this section, we consider the optimization
+\begin{equation}\label{eqn:L2}
+\min_{\bX} \|\bY - \bX \bB \|_F^2 \ + \ G(\bB)   
+\end{equation}
+
+Here we derive an upper bound on the increase in the squared loss term after applying the transformation, $\bV$. We assume that the columns of the matrix, $\bX$, are normalized to a common norm, \ie ($\|\bx_{\a i}\| = c$ for $i = 1,\cdots,p$). Define $L(\bX) = \|\bY - \bX \bB \|_F^2 = \|\bY' - \bx_{\a j} \bbeta_{j \a} - \bx_{\a k} \bbeta_{k \a}\|_F^2$ where $\bY'$ is again the residual term. 
+
+\begin{lemma}
+Let $\widehat{\bB} \in \R^{p \times r}$ and if $\bV$ is as defined in (?), then we have 
+$$L(\bV) - L(\widehat{\bB}) \leq \|\be\|  \|\bY'\|_F \| \bx_{\a j} - \bx_{\a k} \|$$
+\end{lemma}
+\begin{proof}
+
+
+\begin{align*}
+L(\bV) - L(\widehat{\bB})
+& = \frac{1}{2}\|\bY' - \bx_{\a j} (\widehat\bbeta_{j \a} -\be) - \bx_{\a k} (\widehat\bbeta_{k \a} + \be)\|_F^2 \\
+&-  \frac{1}{2}\|\bY' - \bx_{\a j} \widehat\bbeta_{j \a} - \bx_{\a k} \widehat\bbeta_{k \a}\|_F^2
+\end{align*}
+
+Expanding the Frobenius norm terms, canceling the common $\frac{1}{2}\|\bY'\|_F^2$ terms  and using the common norm of columns ($\|\bx_{\a i}\| = c$ for $i = 1,\cdots,p$) we get
+\begin{align*}
+&L(\bV) - L(\widehat{\bB}) \\
+& = \frac{c^2}{2} \textnormal{tr}( (\widehat\bbeta_{j \a}-\be) (\widehat\bbeta_{j \a}-\be)^T + (\widehat\bbeta_{k \a}+\be) (\widehat\bbeta_{k \a}+\be)^T\\
+& - \widehat\bbeta_{j \a} \widehat\bbeta_{j \a}^T - \widehat\bbeta_{k \a} \widehat\bbeta_{k \a}^T)  + \textnormal{tr}(\bY'^T (\bx_{\a j} - \bx_{\a k}) \be) \\
+&+ \textnormal{tr}( (\widehat\bbeta_{j \a}-\be) \bx_{\a j}^T \bx_{\a k} (\widehat\bbeta_{k \a}+\be)^T - \widehat\bbeta_{j \a} \bx_{\a j}^T  \bx_{\a k} \widehat\bbeta_{k \a}^T)
+\end{align*}
+Expanding terms and making further cancellations gives
+\begin{align*}
+&L(\bV) - L(\widehat{\bB}) \\
+& = \textnormal{tr}(\bY'^T (\bx_{\a j} - \bx_{\a k}) \be) -(c^2 - \bx_{\a j}^T \bx_{\a k}) \textnormal{ tr}((  \widehat\bbeta_{j \a} - \widehat\bbeta_{k \a} - \be) \be^T)\\ 
+& \leq \textnormal{tr}(\bY'^T (\bx_{\a j} - \bx_{\a k}) \be) \\
+& - (c^2 - \bx_{\a j}^T  \bx_{\a k}) \|\be\| (\|\widehat\bbeta_{j \a}\| - \|\widehat\bbeta_{k \a}\| - \|\be\|)\\
+& \leq \textnormal{tr}(\bY'^T (\bx_{\a j} - \bx_{\a k}) \be^T) \\
+& \leq \|\bY'\|_F \|(\bx_{\a j} - \bx_{\a k}) \be\|_F \\
+& = \|\be\|  \|\bY'\|_F \| \bx_{\a j} - \bx_{\a k} \|
+\end{align*}
+where the first inequality follows from simplification and Cauchy-Schwarz inequality. The second inequality follows from $c^2 > \bx_{\a j}^T \bx_{\a k} $ and $\|\widehat\bbeta_{j \a}\|_2 - \|\widehat\bbeta_{k \a}\|_2 - \|\be\| > 0$ (by assumption). The third inequality follows, again, by Cauchy-Schwarz inequality.
+
+\end{proof}
+
+Using this Lemma one can easily extend the clustering properties of GrOWL to the optimization in (\ref{eqn:L2}).

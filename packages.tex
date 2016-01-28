@@ -1,0 +1,150 @@
+\usepackage{url}
+\usepackage{color,graphicx,amsthm,amssymb,amsmath,cite,xspace,setspace}
+\usepackage[small,bf]{caption}
+\usepackage{multicol, multirow}
+\definecolor{orange}{rgb}{.6,0.1,.6}
+\newcommand{\rob}[1]{{\textcolor{red}{#1}}}
+
+\usepackage{soul}
+\usepackage{algorithm,algorithmic}
+\usepackage{colortbl}
+\usepackage{rotating}
+\usepackage{times}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{tabularx}
+
+\usepackage{epsf}
+\usepackage{wasysym}
+%\usepackage{mdwmath}
+\usepackage{mdwtab}
+
+\usepackage{bm}
+\usepackage[T1]{fontenc}
+\usepackage[font=small,labelfont=bf,tableposition=top]{caption}
+
+
+
+\def \bepsilon{\mbox{\boldmath$\epsilon$}}
+\def \by{\mbox{\boldmath$y$}}
+\def \bx{\mbox{\boldmath$x$}}
+% Example definitions.
+% --------------------
+\def\x{{\mathbf x}}
+\def\L{{\cal L}}
+\def \ch{c^*}
+\def \o{\begin{rotate}{22.5}$\octagon$\end{rotate}}
+
+\def\Rhat{{\widehat R}}
+\def\Shat{{\widehat S}}
+\def\That{{\widehat T}}
+\def\Chat{{\widehat C}}
+\def\cT{{\mathcal T}}
+\def\cA{{\mathcal A}}
+\def\cI{{\mathcal I}}
+\def\cS{{\mathcal S}}
+\def\cR{{\mathcal R}}
+\def\R{{\mathbb R}}
+\def\E{{\mathbb E}}
+\def \X{{\cal X}}
+\def \Y{{\cal Y}}
+\def \Z{{\cal Z}}
+\def \F{{\cal F}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}
+\newtheorem{defNew}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{example}{Example}
+
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\card}[1]{{\vert#1\vert}}
+\newcommand{\wh}[1]{{\widehat{#1}}}
+\newcommand{\reals}{\mathbb{R}}
+\setstcolor{green}
+\setul{}{0.3ex}
+\def\grad{\nabla}
+\def\htheta{{\widehat{\theta}}}
+\def\ttheta{{\widetilde{\theta}}}
+\def\phtt{{\Phi\htheta_t}}
+\def\ttt{\ttheta_t}
+\def\hta{\ttheta^{(\alpha)}_{t}}
+\def\htb{\ttheta^{(\beta)}_{t}}
+\def\hTa{\ttheta^{(\alpha)}_{t+1}}
+\def\hTb{\ttheta^{(\beta)}_{t+1}}
+\def\tta{\htheta^{(\alpha)}_{t}}
+\def\ttb{\htheta^{(\beta)}_{t}}
+\def\tTa{\htheta^{(\alpha)}_{t+1}}
+\def\tTb{\htheta^{(\beta)}_{t+1}}
+\def\bhtheta{\widehat{\btheta}}
+\def\bctheta{\widetilde{\btheta}}
+\def\btheta{\boldsymbol{\theta}}
+\def\bPhi{\boldsymbol{\Phi}}
+\def\breg{{D_\psi}}
+\def\argmin{\mathop{\!\arg \min}}
+\def\deq{{\triangleq}}
+\def\sign{\mathop{\mbox{sign}}}
+\def \bx{\boldsymbol{x}}
+\def \bnu{\boldsymbol{\nu}}
+\def \by{\boldsymbol{y}}
+\def \bz{\boldsymbol{z}}
+\def \bu{\boldsymbol{u}}
+\def \bv{\boldsymbol{v}}
+\def \bw{\boldsymbol{w}}
+\def \bb{\boldsymbol{b}}
+\def \bg{\boldsymbol{g}}
+\def \ba{\boldsymbol{a}}
+\def \bA{\boldsymbol{A}}
+\def \bS{\boldsymbol{S}}
+\def \bB{\boldsymbol{B}}
+\def \bG{\boldsymbol{G}}
+\def \bW{\boldsymbol{W}}
+\def \bV{\boldsymbol{V}}
+\def \bU{\boldsymbol{U}}
+\def \bX{\boldsymbol{X}}
+\def \bY{\boldsymbol{Y}}
+\def \hY{\boldsymbol{\widehat{Y}}}
+\def \bC{\boldsymbol{C}}
+\def \be{\boldsymbol{\varepsilon}}
+\def \bbeta{\boldsymbol{\beta}}
+\def\Rhat{{\widehat R}}
+\def\Shat{{\widehat S}}
+\def\That{{\widehat T}}
+\def\Chat{{\widehat C}}
+\def\cT{{\mathcal T}}
+\def\cA{{\mathcal A}}
+\def\cI{{\mathcal I}}
+\def\cS{{\mathcal S}}
+\def\cR{{\mathcal R}}
+\def\R{{\mathbb R}}
+\def\E{{\mathbb E}}
+\def\P{{\mathbb P}}
+\def \X{{\cal X}}
+\def \Y{{\cal Y}}
+\def \Z{{\cal Z}}
+\def \S{{\cal S}}
+\def \F{{\cal F}}
+\def \K{{\cal K}}
+\def \a{{\ast}}
+\newcommand{\todo}[1]{{\textcolor{magenta}{#1}}}
+\newcommand{\Ave}[1]{\left\langle #1 \right\rangle}
+\newcommand{\ave}[1]{\langle #1 \rangle}
+
+\newcommand{\ie}[0]{\emph{i.e., }}
+\newcommand{\ea}[0]{\emph{et al. }}
+\newcommand{\eg}[0]{\emph{e.g., }}
+\newcommand{\cf}[0]{\emph{cf.\ }}
+\newcommand{\etc}[0]{\emph{etc.}}
+
