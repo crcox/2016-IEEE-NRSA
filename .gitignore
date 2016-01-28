@@ -1,0 +1,16 @@
+*.aux
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.project.vim
+example_paper.pdf
+example_paper.bib
+icml_numpapers.eps
+icml_numpapers.pdf
+example_paper.tex
+fancyhdr.sty
+algorithm.sty
+algorithmic.sty
+natbib.sty
+build/**
