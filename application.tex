@@ -13,19 +13,20 @@ similarity structure. Because we do not want to presume which of the features jo
 encode the target similarity structure, we will include all voxels that correspond to grey
 matter (cerebral cortex) in our analyses.
 
-The model is fit to optimize the object functions specified in (\ref{eqn.grouplasso}) for
-group lasso and (\ref{eqn:L1}) for GrOWL. The regularization parameter is selected through
-cross-validation, and a final model is fit with that parameter and used to predict the
-similarities existing among a set of items in an independent hold-out set. Model
-predictions are evaluated by permutation test. The $n$ rows within each of the $r$ columns
-of $\bY$ are shuffled independently 1000 times, and the model is refit to each of these
-permuted target structures. This maintains all qualities of the original analysis and data,
-except that permuted versions of $bY$ are devoid of structure. If the accuracy of the true
-model is larger than 97.5\% of the permuted results (corresponding to 2-tailed p<0.05), we
-will conclude that the model has discovered voxel subsets that jointly encode some of the
-target similarity structure. Moreover, because the model is constrained to be sparse, most
-voxels will receive coefficients of zero. Voxels with non-zero coefficients can be
-considered important to representing the target similarity structure.
+The model is fit to optimize the objective functions specified in (\ref{eqn.grouplasso})
+for group lasso and (\ref{eqn:L1}) for GrOWL. The best regularization parameter is
+selected through cross-validation, and a final model is fit with that parameter and used
+to predict the similarities existing among a set of items in an independent hold-out set.
+Model predictions are evaluated by permutation test. The $n$ rows within each of the $r$
+columns of $\bY$ are shuffled independently 1000 times, and the model is refit to each of
+these permuted target structures. This maintains all qualities of the original analysis
+and data, except that permuted versions of $bY$ are devoid of structure. If the accuracy
+of the true model is larger than 97.5\% of the permuted results (corresponding to
+2-tailed p<0.05), we will conclude that the model has discovered voxel subsets that
+jointly encode some of the target similarity structure. Moreover, because the model is
+constrained to be sparse, most voxels will receive coefficients of zero. Voxels with
+non-zero coefficients can be considered important to representing the target similarity
+structure.
 
 The current experiment aims to answer four questions. (1) Does either approach learn a
 model from whole-brain fMRI that can accurately predict the pairwise similarities among
@@ -49,7 +50,7 @@ participant viewed a series of line drawings depicting common objects while thei
 were scanned with fMRI. The line drawings included 37 items, each repeated 4 times for a
 total of 148 unique stimulus events. At each trial participants pressed a button to
 indicate whether the item could fit in a ``wheely bin'' (a form of trash can common in the
-UK).  Scans were collected in a sparse event-related design and underwent standard
+UK). Scans were collected in a sparse event-related design and underwent standard
 pre-processing to align functional images to the anatomy and to remove movement and scanner
 artifact and temporal drift. Responses to each stimulus event were estimated at each voxel
 using a deconvolution procedure with a standard HRF kernel. For each participant a cortical
