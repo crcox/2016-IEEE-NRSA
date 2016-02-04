@@ -14,3 +14,7 @@ algorithm.sty
 algorithmic.sty
 natbib.sty
 build/**
+icml16_nrsa.bbl
+icml16_nrsa_aux
+icml2016_NRSA.fdb_latexmk
+
