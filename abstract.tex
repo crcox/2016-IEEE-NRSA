@@ -1,1 +1,12 @@
-\emph{Representational Similarity Analysis} (RSA) is a tool for testing whether localized brain regions encode representational similarities between stimuli.  In this paper we propose a new approach called {\em Network RSA} that can discover arbitrarily structured brain networks (possibly widely distributed and non-local) that encode similarity information.  We show that Network RSA can be posed as a sparsity-regularized multi-task regression problem. Standard methods, such as the group lasso, may not select important voxels if they happen to be strongly correlated with others. To address this shortcoming we present a new regularizer for multitask regression called \emph{Group Ordered Weighted $\ell_1$} (GrOWL). We show, in theory and in fMRI experiments, how GrOWL deals with strongly correlated covariates.  
+{\em Representational Similarity Learning} (RSL) aims to discover features that are
+important in representing (human-judged) similarities among objects.  RSL can be posed as
+a sparsity-regularized multi-task regression problem. Standard methods, like group lasso,
+may not select important features if they are strongly correlated with others. To address
+this shortcoming we present a new regularizer for multitask regression called \emph{Group
+  Ordered Weighted $\ell_1$} (GrOWL). Another key contribution of our paper is a novel
+application to fMRI brain imaging. \emph{Representational Similarity Analysis} (RSA) is a
+tool for testing whether localized brain regions encode perceptual similarities. Using
+GrOWL, we propose a new approach called {\em Network RSA} that can discover arbitrarily
+structured brain networks (possibly widely distributed and non-local) that encode
+similarity information. We show, in theory and fMRI experiments, how GrOWL deals with
+strongly correlated covariates.
