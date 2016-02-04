@@ -1,5 +1,5 @@
 \begin{proof}
-Outline: the proof proceeds by finding a lower bound for the objective function in (\ref{proxG}) and then we show that the proposed solution achieves this lower bound.
+Outline: the proof proceeds by finding a lower bound for the objective function in (5) and then we show that the proposed solution achieves this lower bound.
 
 First, note that the following is true for any $\bB$ and $\bV$,
 \begin{align*}\label{eqn1}
@@ -8,7 +8,7 @@ First, note that the following is true for any $\bB$ and $\bV$,
 \end{align*}
 where the inequality follows from reverse triangle inequality. 
 
-Combining this with $G(\bB) = \Omega_{\bw}(\tilde{\bbeta})$, we have a lower bound on the objective function in ($\ref{proxG}$). For all $\bB \in \R^{p \times r}$
+Combining this with $G(\bB) = \Omega_{\bw}(\tilde{\bbeta})$, we have a lower bound on the objective function in (5). For all $\bB \in \R^{p \times r}$
 \begin{align*}
 \frac{1}{2}\|\bB - \bV\|_F^2 + G(\bB)
 &\geq \frac{1}{2} \|\textnormal{prox}_{\Omega_{\bw}}(\tilde{\bv}) -  \tilde{\bv}\|^2 + \Omega_{\bw}(\textnormal{prox}_{\Omega_{\bw}}(\tilde{\bv})) 

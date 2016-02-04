@@ -70,9 +70,21 @@ So far, we have seen that the GrOWL penalty has desirable clustering properties 
 to nearly identical coefficient rows. We study two variants of GrOWL with different weight
 sequences $\bw$. First, we study the weights with linear decay (equivalent to the OSCAR in
 single-task regression) and call it GrOWL-I. Next, we study the $\ell_1 +\ell_{\infty}$
-weight sequence and call it GrOWL-II (see Figure~\ref{Fig:sim}).
+weight sequence and call it GrOWL-II.
 %We study another variant of the GrOWL which leads to exact clustering of strongly correlated columns. 
 
+%\begin{figure}[!t]
+  %  \centering
+   % \qquad
+
+    \begin{tabular}[b]{ccc}
+    \hline
+    	GrOWL-I:	& $w_i = \lambda (p - i) \textnormal{ for } i = 1, \dots,  p $   &\\ 
+	GrOWL-II:	& $w_1 = \lambda_1 +  \lambda_2, w_i = \lambda_1 \textnormal{ for } i = 2, \dots,  p$  &\\ \hline
+	    \end{tabular}
+%    \caption{The weight vectors corresponding to GrOWL-I and GrOWL-II }
+
+%  \end{figure}
 %GrOWL-I  :  $w_i = \lambda (p - i) \textnormal{ for } i = 1, \dots,  p $  
 
 %GrOWL-II  :  $w_1 = \lambda_1 +  \lambda_2, w_i = \lambda_1, \textnormal{ for } i = 2, \dots,  p$ 
@@ -98,16 +110,4 @@ $\textnormal{prox}_{G}(\bV) = \widehat \bV$, where $i$-th row of $\widehat \bV$ 
 
 
 
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=0.9\linewidth]{sim3.png}
-    \qquad
-    \begin{tabular}[b]{ccc}
-    \hline
-    	GrOWL-I:	& $w_i = \lambda (p - i) \textnormal{ for } i = 1, \dots,  p $   &\\ 
-	GrOWL-II:	& $w_1 = \lambda_1 +  \lambda_2, w_i = \lambda_1 \textnormal{ for } i = 2, \dots,  p$  &\\ \hline
-    \end{tabular}
-    \caption{A comparison of group lasso and grOWL optimization solutions with correlated columns in $\bX$ showing that GrOWL-I and GrOWL-II select relevant features (row 5 and 7) even if they happen to be strongly correlated and automatically cluster them by setting the corresponding coefficient rows to be equal (or nearly equal).}
-    \label{Fig:sim}
-  \end{figure}
 
