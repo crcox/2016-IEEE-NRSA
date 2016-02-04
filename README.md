@@ -67,3 +67,9 @@ Makefile may "just work" for you. It depends on `latexmk`.
 ```
 make
 ```
+
+Actually editing
+----------------
+I am doing line breaks every 80 columns of text, with exceptions for long
+equations. This makes it a little easier to version control and visualize
+differences between versions.
