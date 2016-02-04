@@ -1,19 +1,35 @@
 
-Here we discuss modifications of the group lasso in order to deal with strongly correlated columns in $\bX$.  Our approach is motivated by the recently proposed OWL \citep{owl}, a special case of which is the so-called OSCAR \citep{oscar}.  These methods are designed to automatically cluster and effectively average highly correlated columns in the data matrix, and have been shown to outperform conventional lasso in many applications, particularly in cases of strong correlations. Both OWL and OSCAR deal only with the single regression setting. The main innovation here is the development of new norms, in the spirit of OWL, that allow us to deal with correlated columns in the multiple regression / multitask setting. We define the GrOWL (group OWL) norm, and show that it automatically groups and average highly correlated columns in $\bX$ in the multiple regression setting. 
+Here we discuss modifications of the group lasso in order to deal with strongly
+correlated columns in $\bX$.  Our approach is motivated by the recently proposed
+OWL \cite{owl}, a special case of which is the so-called OSCAR \citep{oscar}.
+These methods are designed to automatically cluster and effectively average
+highly correlated columns in the data matrix, and have been shown to outperform
+conventional lasso in many applications, particularly in cases of strong
+correlations. Both OWL and OSCAR deal only with the single regression setting.
+The main innovation here is the development of new norms, in the spirit of OWL,
+that allow us to deal with correlated columns in the multiple regression /
+multitask setting. We define the GrOWL (group OWL) norm, and show that it
+automatically groups and average highly correlated columns in $\bX$ in the
+multiple regression setting.
 
 In this section, we consider the general optimization
 \begin{equation}\label{eqn:L1}
-\min_{\bB \in \R^{p \times r}} \ L(\bB) \ + \ G(\bB)   
+  \min_{\bB \in \R^{p \times r}} \ L(\bB) \ + \ G(\bB)
 \end{equation}
  where typical loss functions considered here are absolute error, $L(\bB) = \|\bY - \bX \bB \|_1$, or squared Frobenius error, $L(\bB) = \|\bY - \bX \bB \|_F^2$, and $G(\bB)$ is the GrOWL norm defined later in the section. The following results can be extended to the solution of the optimization with squared Frobenius norm loss but, for the sake of simplicity, we consider the absolute error loss in this section (details for extending the theory to Frobenius norm loss are presented in the supplementary material). We give proof sketches for the main theorems and leave the proof details to the supplementary material.  
 
 \subsection{GrOWL penalty}
-Let $\bB \in \R^{p\times r}$ and let $\bbeta_{i \a}$ and $\bbeta_{\a  j}$ denote the $i$th row and $j$th column of $\bB$.  Define the GrOWL penalty
+Let $\bB \in \R^{p\times r}$ and let $\bbeta_{i \a}$ and $\bbeta_{\a  j}$ denote
+the $i$th row and $j$th column of $\bB$.  Define the GrOWL penalty
+
 \begin{equation}\label{Eqn:growl}
-G(\bB) \ =  \sum_{i=1}^p w_i \|\bbeta_{[i]\a}\|_2 , 
+  G(\bB) \ =  \sum_{i=1}^p w_i \|\bbeta_{[i]\a}\|_2 ,
 \end{equation}
-where $\bbeta_{[i]\a}$ is the row of $\bB$ with the $i$-th largest 2-norm and $\bw$ is a vector of non-negative and non-increasing weights.
-Before we analyze the GrOWL regularization, we state a generalization of Lemma~2.1 in \citep{owl} which will be useful later in the section. 
+
+where $\bbeta_{[i]\a}$ is the row of $\bB$ with the $i$-th largest 2-norm and
+$\bw$ is a vector of non-negative and non-increasing weights.
+Before we analyze the GrOWL regularization, we state a generalization of
+Lemma~2.1 in \citep{owl} which will be useful later in the section.
 
 \begin{lemma}\label{lemma1}
 Consider a vector $\bbeta \in \R^p_+$ and any two of its components $\beta_j$ and $\beta_k$, such that $\beta_j > \beta_k$. Let $\bv \in \R^p_+$ be obtained by applying a transfer of size $\varepsilon, \varepsilon'$ to $\bbeta$ such that $\varepsilon \in (0, (\beta_j - \beta_k )/2]$ and $ -\beta_k \leq \varepsilon' \leq \varepsilon$, that is: $v_j = \beta_j - \varepsilon, v_k = \beta_k + \varepsilon'$, and $v_i = \beta_i$, for $i \neq j, k$. Let $\bw$ be a vector of non-increasing non-negative real values, $w_1 \geq w_2 \geq \cdots \geq w_p \geq 0$, and $\Delta$ be the minimum gap between two consecutive components of vector
@@ -21,12 +37,20 @@ $\bw$, that is, $\Delta = \min\{w_i - w_{i+1}, i = 1, \cdots, p - 1\}$. $\Omega_
 $$\Omega_{\bw}(\bbeta) - \Omega_{\bw}(\bv) \ \geq \ \Delta \varepsilon. \ $$
 \end{lemma}
 
-\begin{proof}
-The proof is similar to that of Lemma~2.1 in \citep{owl} with different sizes $\varepsilon, \varepsilon'$ and the result follows because we assume that the increase in $k$-th component is less than the decrease in $j$-th component \ie $\varepsilon' \leq \varepsilon$.\\
-More intuitively, if $\beta_k$ doesn't go up by $\varepsilon$ in magnitude, then increase its magnitude so that it does and call this $\bv'$ with $v'_j = \beta_j - \varepsilon$ and $v'_k = \beta_k + \varepsilon$.  Then we apply Lemma~2.1 in \citep{owl} to $\bv'$ and $\Omega_{\bw}(\bv) \leq \Omega_{\bw}(\bv')$. 
-\end{proof}
+\textit{Proof sketch.}
+The proof is similar to that of Lemma~2.1 in \cite{owl} with different sizes
+$\varepsilon, \varepsilon'$ and the result follows because we assume that the
+increase in $k$-th component is less than the decrease in $j$-th component \ie
+$\varepsilon' \leq \varepsilon$.
+%More intuitively, if $\beta_k$ doesn't go up by $\varepsilon$ in magnitude,
+%then increase its magnitude so that it does and call this $\bv'$ with $v'_j =
+%\beta_j - \varepsilon$ and $v'_k = \beta_k + \varepsilon$.  Then we apply
+%Lemma~2.1 in \cite{owl} to $\bv'$ and $\Omega_{\bw}(\bv) \leq
+%\Omega_{\bw}(\bv')$.
 
-The following theorem states that identical variables lead to equal coefficient rows corresponding to those variables in the solution given by the optimization using GrOWL.
+The following theorem states that identical variables lead to equal coefficient
+rows corresponding to those variables in the solution given by the optimization
+using GrOWL.
 
 \begin{theorem}[Identical columns]\label{ident1}
 Let $\widehat \bB$ denote the solution to the optimization in (\ref{eqn:L1}) with $L(\bB) = \|\bY - \bX \bB \|_1$ or $L(\bB) = \|\bY - \bX \bB \|_F^2$.
@@ -36,42 +60,56 @@ $\widehat \bbeta_{j \a} = \widehat \bbeta_{k \a}$.
 
 \textit{Proof sketch.}
 The proof is divided into two steps. First, we show $\|\widehat \bbeta_{j \a}\| = \|\widehat \bbeta_{k \a}\|$ and then we further show that the rows are equal. 
-We proceed by contradiction. Assume $\|\widehat \bbeta_{j \a}\| \neq \|\widehat \bbeta_{k \a}\|$ and, without loss of generality, suppose $\|\widehat \bbeta_{j \a}\| > \|\widehat \bbeta_{k \a}\|$. We see that there exists a modification of the solution with a smaller GrOWL norm using Lemma~\ref{lemma1} and same data-fitting term, and thus smaller overall objective value which contradicts our assumption that $\widehat \bB$ is the minimizer of $L(\bB) + G(\bB)$. \\
+We proceed by contradiction. Assume $\|\widehat \bbeta_{j \a}\| \neq \|\widehat
+\bbeta_{k \a}\|$ and, without loss of generality, suppose $\|\widehat \bbeta_{j
+  \a}\| > \|\widehat \bbeta_{k \a}\|$. We see that there exists a modification
+of the solution with a smaller GrOWL norm using Lemma~\ref{lemma1} and same
+data-fitting term, and thus smaller overall objective value which contradicts
+our assumption that $\widehat \bB$ is the minimizer of $L(\bB) + G(\bB)$.
 
-The following theorem states that nearly identical variables lead to equal norm coefficient rows corresponding to those variables in the solution given by the optimization using GrOWL.
+The following theorems state that nearly identical variables lead to equal norm
+coefficient rows, and further highly correlated coefficient rows, corresponding
+to those variables in the solution given by the optimization using GrOWL.
 \begin{theorem}[Correlated columns 1]\label{thm2}
-Let $\widehat \bB$ denote the solution to the optimization in (\ref{eqn:L1}) with $L(\bB) = \|\bY - \bX \bB \|_1$.
-If $\bx_{\a j}$ and $\bx_{\a k}$ satisfy $\|\bx_{\a j} - \bx_{\a k}\|_1 \leq \frac{\Delta}{\sqrt{r}} $, then
+Let $\widehat \bB$ denote the solution to the optimization in (\ref{eqn:L1})
+with $L(\bB) = \|\bY - \bX \bB \|_1$.
+If $\bx_{\a j}$ and $\bx_{\a k}$ satisfy $\|\bx_{\a j} - \bx_{\a k}\|_1 \leq
+\frac{\Delta}{\sqrt{r}} $, then
 $\|\widehat \bbeta_{j \a}\| = \|\widehat \bbeta_{k \a}\|$.
 
 \end{theorem}
 \textit{Proof sketch.}
-The proof is similar to the identical columns theorem. By contradiction and without loss of generality, suppose $\|\widehat \bbeta_{j \a}\| > \|\widehat \bbeta_{k \a}\|$. We show that there exists a transformation of $\widehat{\bB}$ such that the increase in the data fitting term is smaller than the decrease in the GrOWL norm. \\
+The proof is similar to the identical columns theorem. By contradiction and
+without loss of generality, suppose $\|\widehat \bbeta_{j \a}\| > \|\widehat
+\bbeta_{k \a}\|$. We show that there exists a transformation of $\widehat{\bB}$
+such that the increase in the data fitting term is smaller than decrease in the
+GrOWL norm.
 
-
-The following theorem states that nearly identical variables lead to highly correlated coefficient rows corresponding to those variables in the solution given by the optimization using GrOWL.
 \begin{theorem}[Correlated columns 2]\label{thm3}
-Let $\widehat \bB$ denote the solution to the optimization in (\ref{eqn:L1}) with $L(\bB) = \|\bY - \bX \bB \|_1$.
+Let $\widehat \bB$ denote the solution to the optimization in (\ref{eqn:L1})
+with $L(\bB) = \|\bY - \bX \bB \|_1$.
 If $\bx_{\a j}$ and $\bx_{\a k}$ satisfy $\|\bx_{\a j} - \bx_{\a k}\|_1 \leq \frac{\Delta}{\phi\sqrt{r}} $, then
 $\|\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}\| \leq \frac{8\phi \|\widehat \bbeta_{k \a}\|}{4\phi^2+1}$ 
 \\which further implies that
 $$1 \geq \frac{\widehat \bbeta_{j \a}^T \widehat \bbeta_{k \a}}{\|\widehat \bbeta_{j \a}\|\| \widehat \bbeta_{k \a}\|} \geq 1 - \frac{1}{2}\left( \frac{8\phi}{4\phi^2+1}\right)^2     \left( \geq 1 - \frac{2}{\phi^2}\right)$$ where $\phi \geq 1$.
-
 \end{theorem}
-\textit{Proof sketch.}
-By contradiction, suppose $\|\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}\| \geq
-\frac{8\phi \|\widehat \bbeta_{k \a}\|}{4\phi^2+1}  \geq \frac{2 \|\widehat \bbeta_{k
-    \a}\|}{\phi}$. We show that there exists a transformation of $\widehat{\bB}$ such that
-the increase in the data fitting term is smaller than the decrease in the GrOWL norm. This
-contradicts our assumption that $\widehat{\bB}$ is the minimizer of $L(\bB) + G(\bB)$ and
-completes the proof.\\
 
-So far, we have seen that the GrOWL penalty has desirable clustering properties that lead
-to nearly identical coefficient rows. We study two variants of GrOWL with different weight
-sequences $\bw$. First, we study the weights with linear decay (equivalent to the OSCAR in
-single-task regression) and call it GrOWL-I. Next, we study the $\ell_1 +\ell_{\infty}$
-weight sequence and call it GrOWL-II.
-%We study another variant of the GrOWL which leads to exact clustering of strongly correlated columns. 
+\textit{Proof sketch.}
+By contradiction, suppose
+$\|\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}\| \geq \frac{8\phi \|\widehat
+  \bbeta_{k \a}\|}{4\phi^2+1}  \geq \frac{2 \|\widehat \bbeta_{k \a}\|}{\phi}$.
+We show that there exists a transformation of $\widehat{\bB}$ such that the
+increase in the data fitting term is smaller than the decrease in the GrOWL
+norm. This contradicts our assumption that $\widehat{\bB}$ is the minimizer of
+$L(\bB) + G(\bB)$ and completes the proof.
+
+So far, we have seen that the GrOWL penalty has desirable clustering properties
+that lead to nearly identical coefficient rows. We study two variants of GrOWL
+with different weight sequences $\bw$. We study the weights with linear decay
+(equivalent to the OSCAR in single-task regression) and call it GrOWL-I, and the
+$\ell_1 +\ell_{\infty}$ weight sequence and call it GrOWL-II.
+%We study another variant of the GrOWL which leads to exact clustering of
+%strongly correlated columns.
 
 %\begin{figure}[!t]
   %  \centering
@@ -79,28 +117,29 @@ weight sequence and call it GrOWL-II.
 
     \begin{tabular}[b]{ccc}
     \hline
-    	GrOWL-I:	& $w_i = \lambda (p - i) \textnormal{ for } i = 1, \dots,  p $   &\\ 
+    	GrOWL-I:	& $w_i = \lambda (p - i) \textnormal{ for } i = 1, \dots,  p $   &\\
 	GrOWL-II:	& $w_1 = \lambda_1 +  \lambda_2, w_i = \lambda_1 \textnormal{ for } i = 2, \dots,  p$  &\\ \hline
 	    \end{tabular}
 %    \caption{The weight vectors corresponding to GrOWL-I and GrOWL-II }
 
 %  \end{figure}
-%GrOWL-I  :  $w_i = \lambda (p - i) \textnormal{ for } i = 1, \dots,  p $  
+%GrOWL-I  :  $w_i = \lambda (p - i) \textnormal{ for } i = 1, \dots,  p $
 
-%GrOWL-II  :  $w_1 = \lambda_1 +  \lambda_2, w_i = \lambda_1, \textnormal{ for } i = 2, \dots,  p$ 
-    
-
-
+%GrOWL-II  :  $w_1 = \lambda_1 +  \lambda_2, w_i = \lambda_1, \textnormal{ for } i = 2, \dots,  p$
 
 
 \subsection{Proximal algorithms}
-We present computational algorithms for the optimization using the GrOWL norm here. The algorithms rely on the computation of the proximity operator \citep{prox} of the GrOWL norm given by
+We present computational algorithms for the optimization using the GrOWL norm
+here. The algorithms rely on the computation of the proximity operator
+\citep{prox} of the GrOWL norm given by
 \begin{eqnarray}\label{proxG}
-\textnormal{prox}_{G}(\bV) = \textnormal{arg} \underset{\bB}{ \textnormal{ min } } \frac{1}{2}\|\bB - \bV\|_F^2 + G(\bB)
+\textnormal{prox}_{G}(\bV) = \textnormal{arg} \underset{\bB}{ \textnormal{ min } } \frac{1}{2}\|\bB - \bV\|_F^2 + G(\bB) 
 \end{eqnarray}
-In the following theorem, we solve for the proximity operator of GrOWL
-in terms of the proximity of OWL. For the exact formulation of
-$\textnormal{prox}_{\Omega_{\bw}}$, see \citet{candes13} and \citet{ZengFigueiredo2014}.
+
+In the following theorem, we solve for the proximity operator of GrOWL in terms
+of the proximity of OWL. For the exact formulation of
+$\textnormal{prox}_{\Omega_{\bw}}$, see \cite{candes13},
+\citep{ZengFigueiredo2014}.
 
 \begin{theorem} Let $\tilde{v}_i = \| \bv_{i \a}\|$ for $i = 1, \cdots, p$. Then
 $\textnormal{prox}_{G}(\bV) = \widehat \bV$, where $i$-th row of $\widehat \bV$ is
@@ -108,8 +147,8 @@ $\textnormal{prox}_{G}(\bV) = \widehat \bV$, where $i$-th row of $\widehat \bV$ 
 \widehat \bv_{i \a} =  (\textnormal{prox}_{\Omega_{\bw}}(\tilde{\bv}))_i \frac{\bv_{i\a}}{\|\bv_{i \a}\|}
 \end{eqnarray}
 \end{theorem}
-\textit{Proof Sketch:} The proof proceeds by finding a lower bound for the objective function in (\ref{proxG}) and then we show that the proposed solution achieves this lower bound.
 
-
-
-
+\textit{Proof Sketch:}
+The proof proceeds by finding a lower bound for the objective function in
+(\ref{proxG}) and then we show that the proposed solution achieves this lower
+bound.
