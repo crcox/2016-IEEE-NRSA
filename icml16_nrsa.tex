@@ -105,29 +105,43 @@
 	\input{application.tex}
 
 	\section{Conclusion}
-%We have developed and demonstrated a new approach for whole-brain Representational Similarity Analysis called Network RSA (NRSA). Unlike traditional RSA methods that consider only specific regions of interest or spherical clusters of the cortex,  NRSA can discover arbitrarily structured brain networks (possibly widely distributed and non-local) that encode similarity information.  NRSA is posed as a sparsity-regularized multi-task regression problem. This allows us to effectively search over all subsets of voxels (not just localized clusters) to detect similarity-encoding networks.  We proposed a new sparsity regularizer for multi-task regression that is able to cope with strongly correlated covariates (voxels in the fMRI application), which can perform better than the conventional group lasso. named the GrOWL.  Experiments with real and synthetic datasets demonstrated the potential of our new approach.
+%We have developed and demonstrated a new approach for whole-brain
+%Representational Similarity Analysis called Network RSA (NRSA). Unlike
+%traditional RSA methods that consider only specific regions of interest or
+%spherical clusters of the cortex,  NRSA can discover arbitrarily structured
+%brain networks (possibly widely distributed and non-local) that encode
+%similarity information.  NRSA is posed as a sparsity-regularized multi-task
+%regression problem. This allows us to effectively search over all subsets of
+%voxels (not just localized clusters) to detect similarity-encoding networks.
+%We proposed a new sparsity regularizer for multi-task regression that is able
+%to cope with strongly correlated covariates (voxels in the fMRI application),
+%which can perform better than the conventional group lasso. named the GrOWL.
+%Experiments with real and synthetic datasets demonstrated the potential of our
+%new approach.
 
-We have developed and demonstrated a new approach for whole-brain Representational
-Similarity Analysis called Network RSA (NRSA). Unlike traditional RSA methods that
-consider only specific regions of interest or spherical clusters of the cortex,  NRSA can
-discover arbitrarily structured brain networks (possibly widely distributed and non-local)
-that encode similarity information.  NRSA is posed as a sparsity-regularized multi-task
-regression problem. This allows us to effectively search over all subsets of voxels (not
-just localized clusters) to detect similarity-encoding networks.  We further proposed a
-new sparsity regularizer for multi-task regression, the GrOWL, that is able to cope with
-strongly correlated covariates, a serious challenge for sparsity-based approaches to fMRI
-analysis.
+We have developed and demonstrated a new approach for whole-brain
+Representational Similarity Analysis called Network RSA (NRSA). Unlike
+traditional RSA methods that consider only specific regions of interest or
+spherical clusters of the cortex,  NRSA can discover arbitrarily structured
+brain networks (possibly widely distributed and non-local) that encode
+similarity information.  NRSA is posed as a sparsity-regularized multi-task
+regression problem. This allows us to effectively search over all subsets of
+voxels (not just localized clusters) to detect similarity-encoding networks.  We
+further proposed a new sparsity regularizer for multi-task regression, the
+GrOWL, that is able to cope with strongly correlated covariates, a serious
+challenge for sparsity-based approaches to fMRI analysis.
 
-Our analysis of synthetic data generated from a neural network model of word-reading
-showed that the GrOWL identifies signal-carrying features more consistently than group
-lasso when signal is redundant; that the approach can discover different feature subsets
-encoding different kinds of similarity structure; and that the weight matrix $\bW$ can be
-used to uncover subnetworks of features that jointly work to encode such structure.
-Analysis of visual similarity structure in fMRI data from a picture-viewing task further
-established that the approach can be used to find cortical regions and subnetworks that
-likewise express a target similarity structure. In future work these methods may be useful
-for discovering such structure for cases where the interesting cortical regions and
-networks have proven elusive.
+Our analysis of synthetic data generated from a neural network model of
+word-reading showed that the GrOWL identifies signal-carrying features more
+consistently than group lasso when signal is redundant; that the approach can
+discover different feature subsets encoding different kinds of similarity
+structure; and that the weight matrix $\bW$ can be used to uncover subnetworks
+of features that jointly work to encode such structure.  Analysis of visual
+similarity structure in fMRI data from a picture-viewing task further
+established that the approach can be used to find cortical regions and
+subnetworks that likewise express a target similarity structure. In future work
+these methods may be useful for discovering such structure for cases where the
+interesting cortical regions and networks have proven elusive.
 
 
 \bibliographystyle{icml2016}
