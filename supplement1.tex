@@ -1,44 +1,80 @@
 \subsection*{Proof of Theorem~\ref{ident1}}
 \begin{proof}
-The proof is divided into two steps. First, we show $\|\widehat \bbeta_{j \a}\| = \|\widehat \bbeta_{k \a}\|$ and then we further show that the rows are equal. 
-We proceed by contradiction. Assume $\|\widehat \bbeta_{j \a}\| \neq \|\widehat \bbeta_{k \a}\|$ and, without loss of generality, suppose $\|\widehat \bbeta_{j \a}\| > \|\widehat \bbeta_{k \a}\|$. We see that there exists a modification of the solution with a smaller GrOWL norm and same data-fitting term, and thus smaller overall objective value which contradicts our assumption that $\widehat \bB$ is the minimizer of $L(\bB) + G(\bB)$. 
+The proof is divided into two steps. First, we show
+$\|\widehat \bbeta_{j \a}\| = \|\widehat \bbeta_{k \a}\|$ and then we further show that the
+rows are equal. We proceed by contradiction. Assume
+$\|\widehat \bbeta_{j \a}\| \neq\|\widehat \bbeta_{k \a}\|$ and, without loss of
+generality, suppose $\|\widehat \bbeta_{j \a}\| > \|\widehat \bbeta_{k \a}\|$. We see that
+there exists a modification of the solution with a smaller GrOWL norm and same
+data-fitting term, and thus smaller overall objective value which contradicts our
+assumption that $\widehat \bB$ is the minimizer of $L(\bB) + G(\bB)$.
 
-Consider the modification, $\bV = \widehat \bB$ except $\widehat \bv_{j \a} = \widehat \bbeta_{j \a} - \be$ and $\widehat \bv_{k \a} = \widehat \bbeta_{k \a} + \be$  where $\be = \delta \widehat \bbeta_{j \a}$ and $\delta$ is chosen such that $ \| \be \| \in \big (0, \frac{\|\widehat \bbeta_{j \a}\| - \| \widehat \bbeta_{k \a} \|}{2} \big ]$\\
-Let $L(\bB) = \|\bY - \bX \bB \|_1 = \|\bY' - \bx_{\a j} \widehat \bbeta_{j \a} - \bx_{\a k} \widehat \bbeta_{k \a}\|_1$ where $\bY'$ is the residual term given by $\bY' = \bY - \sum_{i \neq j, k} \bx_{\a i} \widehat \bbeta_{i \a}$. Since $\bx_{\a j} = \bx_{\a k}$, $L$ is invariant under this transformation, \ie $L(\bV) = L(\widehat \bB) $. Same is true for $L(\bB) = \|\bY - \bX \bB \|_F^2$.
+Consider the modification, $\bV = \widehat \bB$ except
+$\widehat \bv_{j \a} = \widehat \bbeta_{j \a} - \be$ and 
+$\widehat \bv_{k \a} = \widehat \bbeta_{k \a} + \be$  where
+$\be = \delta \widehat \bbeta_{j \a}$ and $\delta$ is chosen such that
+$ \| \be \| \in \big (0, \frac{\|\widehat \bbeta_{j \a}\| - \| \widehat \bbeta_{k \a} \|}{2} \big ]$\\
 
-Observe that the GrOWL norm of $\bB$ is equal to the OWL norm of the vector of euclidean norms of rows of $\bB$. Since $\| \bv_{k \a} \| = \| \bbeta_{k \a} + \be \| \leq \| \bbeta_{k \a} \| + \| \be \|$, this transformation is equivalent to that defined in Lemma \ref{lemma1} and we have
+Let
+$L(\bB) = \|\bY - \bX \bB \|_1 = \|\bY' - \bx_{\a j} \widehat \bbeta_{j \a} - \bx_{\a k} \widehat\bbeta_{k \a}\|_1$
+where $\bY'$ is the residual term given by
+$\bY' = \bY - \sum_{i \neq j, k} \bx_{\a i} \widehat \bbeta_{i \a}$. Since
+$\bx_{\a j} = \bx_{\a k}$, $L$ is invariant under this transformation, \ie
+$L(\bV) = L(\widehat \bB) $. Same is true for $L(\bB) = \|\bY - \bX \bB \|_F^2$.
+
+Observe that the GrOWL norm of $\bB$ is equal to the OWL norm of the vector of euclidean
+norms of rows of $\bB$. Since $\| \bv_{k \a} \| = \| \bbeta_{k \a} + \be \| \leq \|
+\bbeta_{k \a} \| + \| \be \|$, this transformation is equivalent to that defined in Lemma
+\ref{lemma1} and we have
 \begin{eqnarray*}
  G(\widehat{\bB}) - G(\bV) & \geq & \Delta \|\be\| 
 \end{eqnarray*}
-This leads to a contradiction to our assumption that $\widehat \bB$ is the minimizer of $L(\bB) + G(\bB)$ and completes the proof that $\|\widehat \bbeta_{j \a}\| = \|\widehat \bbeta_{k \a}\|$.  
-Now, let $\widehat \bbeta_{j \a} + \widehat \bbeta_{k \a} = \bz$, then the minimizer satisfies
+This leads to a contradiction to our assumption that $\widehat \bB$ is the minimizer of
+$L(\bB) + G(\bB)$ and completes the proof that $\|\widehat \bbeta_{j \a}\| = \|\widehat
+\bbeta_{k \a}\|$.
+Now, let $\widehat \bbeta_{j \a} + \widehat \bbeta_{k \a} = \bz$, then the minimizer
+satisfies
 $$\min_{\widehat \bbeta_{j \a}, \widehat \bbeta_{k \a}} w_j\|\widehat \bbeta_{j \a}\| + w_k \|\widehat \bbeta_{k \a}\| $$
 $$\textnormal{ such that } \widehat \bbeta_{j \a} + \widehat \bbeta_{k \a} = \bz \textnormal{ and } \|\widehat \bbeta_{j \a}\| = \|\widehat \bbeta_{k \a}\| $$
-It is easy to see that the solution to this optimization is $\widehat \bbeta_{j \a} = \widehat \bbeta_{k \a} = \bz/2$
+It is easy to see that the solution to this optimization is
+$\widehat \bbeta_{j \a} = \widehat \bbeta_{k \a} = \bz/2$
 \end{proof}
 
 \subsection*{Proof of Theorem~\ref{thm2}}
 \begin{proof}
-The proof is similar to the identical columns theorem. By contradiction and without loss of generality, suppose $\|\widehat \bbeta_{j \a}\| > \|\widehat \bbeta_{k \a}\|$. We show that there exists a transformation of $\widehat{\bB}$ such that the increase in the data fitting term is smaller than the decrease in the GrOWL norm. 
+The proof is similar to the identical columns theorem. By contradiction and without loss
+of generality, suppose $\|\widehat \bbeta_{j \a}\| > \|\widehat \bbeta_{k \a}\|$. We show
+that there exists a transformation of $\widehat{\bB}$ such that the increase in the data
+fitting term is smaller than the decrease in the GrOWL norm. 
 
-Consider the modification, $\bV$, as defined in the proof of Theorem \ref{ident1}. By triangle inequality, the difference in loss function $L$ that results from this modification satisfies
+Consider the modification, $\bV$, as defined in the proof of Theorem \ref{ident1}. By
+triangle inequality, the difference in loss function $L$ that results from this
+modification satisfies
 \begin{eqnarray*}
-L(\bm V) - L(\widehat{\bm B})  & \leq  & \bigl\|{\bm x}_{\a j}- {\bm x}_{\a k}\bigr\|_1  \|\be \|_1  
+L(\bm V) - L(\widehat{\bm B})  & \leq  & \bigl\|{\bm x}_{\a j}- {\bm x}_{\a k}\bigr\|_1  \|\be \|_1
 \end{eqnarray*}
-Invoking Lemma \ref{lemma1} as in the previous theorem and $\| \be \|_1 \leq \sqrt{r} \| \be \|$, we get
+Invoking Lemma \ref{lemma1} as in the previous theorem and $\| \be \|_1 \leq \sqrt{r} \| \be \|$,
+we get
 \begin{align*}
 L(\bV) + G(\bV) - &( L(\widehat{\bB}) + G(\widehat{\bB}) ) \\
 &\leq (\bigl\|{\bm x}_{\a j}- {\bm x}_{\a k}\bigr\|_1 -  \frac{\Delta}{\sqrt{r}}) \|\be\| <  0
 \end{align*}
 
-This contradicts our assumption that $\widehat{\bB}$ is the minimizer of $L(\bB) + G(\bB)$ and completes the proof.
+This contradicts our assumption that $\widehat{\bB}$ is the minimizer of $L(\bB) + G(\bB)$
+and completes the proof.
 \end{proof}
 
 \subsection*{Proof of Theorem~\ref{thm3}}
 \begin{proof}
-The proof is similar to the identical columns theorem. By contradiction, suppose $\|\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}\| \geq \frac{8\phi \|\widehat \bbeta_{k \a}\|}{4\phi^2+1}  \geq \frac{2 \|\widehat \bbeta_{k \a}\|}{\phi}$. We show that there exists a transformation of $\widehat{\bB}$ such that the increase in the data fitting term is smaller than the decrease in the GrOWL norm. 
+The proof is similar to the identical columns theorem. By contradiction, suppose
+$\|\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}\| \geq \frac{8\phi \|\widehat \bbeta_{k
+    \a}\|}{4\phi^2+1}  \geq \frac{2 \|\widehat \bbeta_{k \a}\|}{\phi}$. We show that there
+exists a transformation of $\widehat{\bB}$ such that the increase in the data fitting term
+is smaller than the decrease in the GrOWL norm. 
 
-Consider the modification, $\bV$, as defined in the proof of Theorem \ref{ident1} with $\be = \frac{\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}}{2}$. By triangle inequality, the difference in loss function $L$ that results from this modification satisfies
+Consider the modification, $\bV$, as defined in the proof of Theorem \ref{ident1} with
+$\be = \frac{\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}}{2}$. By triangle inequality,
+the difference in loss function $L$ that results from this modification satisfies
 \begin{eqnarray*}
 L(\bm V) - L(\widehat{\bm B})  & \leq  & \bigl\|{\bm x}_{\a j}- {\bm x}_{\a k}\bigr\|_1  \|\be \|_1  
 \end{eqnarray*}

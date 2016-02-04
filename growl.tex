@@ -54,14 +54,24 @@ The following theorem states that nearly identical variables lead to highly corr
 Let $\widehat \bB$ denote the solution to the optimization in (\ref{eqn:L1}) with $L(\bB) = \|\bY - \bX \bB \|_1$.
 If $\bx_{\a j}$ and $\bx_{\a k}$ satisfy $\|\bx_{\a j} - \bx_{\a k}\|_1 \leq \frac{\Delta}{\phi\sqrt{r}} $, then
 $\|\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}\| \leq \frac{8\phi \|\widehat \bbeta_{k \a}\|}{4\phi^2+1}$ 
-\\which further implies that 
+\\which further implies that
 $$1 \geq \frac{\widehat \bbeta_{j \a}^T \widehat \bbeta_{k \a}}{\|\widehat \bbeta_{j \a}\|\| \widehat \bbeta_{k \a}\|} \geq 1 - \frac{1}{2}\left( \frac{8\phi}{4\phi^2+1}\right)^2     \left( \geq 1 - \frac{2}{\phi^2}\right)$$ where $\phi \geq 1$.
 
 \end{theorem}
 \textit{Proof sketch.}
-By contradiction, suppose $\|\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}\| \geq \frac{8\phi \|\widehat \bbeta_{k \a}\|}{4\phi^2+1}  \geq \frac{2 \|\widehat \bbeta_{k \a}\|}{\phi}$. We show that there exists a transformation of $\widehat{\bB}$ such that the increase in the data fitting term is smaller than the decrease in the GrOWL norm. This contradicts our assumption that $\widehat{\bB}$ is the minimizer of $L(\bB) + G(\bB)$ and completes the proof.\\
+By contradiction, suppose $\|\widehat \bbeta_{j \a} - \widehat \bbeta_{k \a}\| \geq
+\frac{8\phi \|\widehat \bbeta_{k \a}\|}{4\phi^2+1}  \geq \frac{2 \|\widehat \bbeta_{k
+    \a}\|}{\phi}$. We show that there exists a transformation of $\widehat{\bB}$ such that
+the increase in the data fitting term is smaller than the decrease in the GrOWL norm. This
+contradicts our assumption that $\widehat{\bB}$ is the minimizer of $L(\bB) + G(\bB)$ and
+completes the proof.\\
 
-So far, we have seen that the GrOWL penalty has desirable clustering properties that lead to nearly identical coefficient rows. We study two variants of GrOWL with different weight sequences $\bw$. First, we study the weights with linear decay (equivalent to the OSCAR in single-task regression) and call it GrOWL-I. Next, we study the $\ell_1 +\ell_{\infty}$ weight sequence and call it GrOWL-II (see Figure~\ref{Fig:sim}). %We study another variant of the GrOWL which leads to exact clustering of strongly correlated columns. 
+So far, we have seen that the GrOWL penalty has desirable clustering properties that lead
+to nearly identical coefficient rows. We study two variants of GrOWL with different weight
+sequences $\bw$. First, we study the weights with linear decay (equivalent to the OSCAR in
+single-task regression) and call it GrOWL-I. Next, we study the $\ell_1 +\ell_{\infty}$
+weight sequence and call it GrOWL-II (see Figure~\ref{Fig:sim}).
+%We study another variant of the GrOWL which leads to exact clustering of strongly correlated columns. 
 
 %GrOWL-I  :  $w_i = \lambda (p - i) \textnormal{ for } i = 1, \dots,  p $  
 
