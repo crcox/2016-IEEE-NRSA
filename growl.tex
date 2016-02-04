@@ -1,5 +1,5 @@
 
-Here we discuss modifications of the group lasso in order to deal with strongly correlated columns in $\bX$.  Our approach is motivated by the recently proposed OWL \cite{owl}, a special case of which is the so-called OSCAR \cite{oscar}.  These methods are designed to automatically cluster and effectively average highly correlated columns in the data matrix, and have been shown to outperform conventional lasso in many applications, particularly in cases of strong correlations. Both OWL and OSCAR deal only with the single regression setting. The main innovation here is the development of new norms, in the spirit of OWL, that allow us to deal with correlated columns in the multiple regression / multitask setting. We define the GrOWL (group OWL) norm, and show that it automatically groups and average highly correlated columns in $\bX$ in the multiple regression setting. 
+Here we discuss modifications of the group lasso in order to deal with strongly correlated columns in $\bX$.  Our approach is motivated by the recently proposed OWL \citep{owl}, a special case of which is the so-called OSCAR \citep{oscar}.  These methods are designed to automatically cluster and effectively average highly correlated columns in the data matrix, and have been shown to outperform conventional lasso in many applications, particularly in cases of strong correlations. Both OWL and OSCAR deal only with the single regression setting. The main innovation here is the development of new norms, in the spirit of OWL, that allow us to deal with correlated columns in the multiple regression / multitask setting. We define the GrOWL (group OWL) norm, and show that it automatically groups and average highly correlated columns in $\bX$ in the multiple regression setting. 
 
 In this section, we consider the general optimization
 \begin{equation}\label{eqn:L1}
@@ -13,7 +13,7 @@ Let $\bB \in \R^{p\times r}$ and let $\bbeta_{i \a}$ and $\bbeta_{\a  j}$ denote
 G(\bB) \ =  \sum_{i=1}^p w_i \|\bbeta_{[i]\a}\|_2 , 
 \end{equation}
 where $\bbeta_{[i]\a}$ is the row of $\bB$ with the $i$-th largest 2-norm and $\bw$ is a vector of non-negative and non-increasing weights.
-Before we analyze the GrOWL regularization, we state a generalization of Lemma~2.1 in \cite{owl} which will be useful later in the section. 
+Before we analyze the GrOWL regularization, we state a generalization of Lemma~2.1 in \citep{owl} which will be useful later in the section. 
 
 \begin{lemma}\label{lemma1}
 Consider a vector $\bbeta \in \R^p_+$ and any two of its components $\beta_j$ and $\beta_k$, such that $\beta_j > \beta_k$. Let $\bv \in \R^p_+$ be obtained by applying a transfer of size $\varepsilon, \varepsilon'$ to $\bbeta$ such that $\varepsilon \in (0, (\beta_j - \beta_k )/2]$ and $ -\beta_k \leq \varepsilon' \leq \varepsilon$, that is: $v_j = \beta_j - \varepsilon, v_k = \beta_k + \varepsilon'$, and $v_i = \beta_i$, for $i \neq j, k$. Let $\bw$ be a vector of non-increasing non-negative real values, $w_1 \geq w_2 \geq \cdots \geq w_p \geq 0$, and $\Delta$ be the minimum gap between two consecutive components of vector
@@ -22,8 +22,8 @@ $$\Omega_{\bw}(\bbeta) - \Omega_{\bw}(\bv) \ \geq \ \Delta \varepsilon. \ $$
 \end{lemma}
 
 \begin{proof}
-The proof is similar to that of Lemma~2.1 in \cite{owl} with different sizes $\varepsilon, \varepsilon'$ and the result follows because we assume that the increase in $k$-th component is less than the decrease in $j$-th component \ie $\varepsilon' \leq \varepsilon$.\\
-More intuitively, if $\beta_k$ doesn't go up by $\varepsilon$ in magnitude, then increase its magnitude so that it does and call this $\bv'$ with $v'_j = \beta_j - \varepsilon$ and $v'_k = \beta_k + \varepsilon$.  Then we apply Lemma~2.1 in \cite{owl} to $\bv'$ and $\Omega_{\bw}(\bv) \leq \Omega_{\bw}(\bv')$. 
+The proof is similar to that of Lemma~2.1 in \citep{owl} with different sizes $\varepsilon, \varepsilon'$ and the result follows because we assume that the increase in $k$-th component is less than the decrease in $j$-th component \ie $\varepsilon' \leq \varepsilon$.\\
+More intuitively, if $\beta_k$ doesn't go up by $\varepsilon$ in magnitude, then increase its magnitude so that it does and call this $\bv'$ with $v'_j = \beta_j - \varepsilon$ and $v'_k = \beta_k + \varepsilon$.  Then we apply Lemma~2.1 in \citep{owl} to $\bv'$ and $\Omega_{\bw}(\bv) \leq \Omega_{\bw}(\bv')$. 
 \end{proof}
 
 The following theorem states that identical variables lead to equal coefficient rows corresponding to those variables in the solution given by the optimization using GrOWL.
@@ -94,11 +94,13 @@ weight sequence and call it GrOWL-II.
 
 
 \subsection{Proximal algorithms}
-We present computational algorithms for the optimization using the GrOWL norm here. The algorithms rely on the computation of the proximity operator \cite{prox} of the GrOWL norm given by
+We present computational algorithms for the optimization using the GrOWL norm here. The algorithms rely on the computation of the proximity operator \citep{prox} of the GrOWL norm given by
 \begin{eqnarray}\label{proxG}
-\textnormal{prox}_{G}(\bV) = \textnormal{arg} \underset{\bB}{ \textnormal{ min } } \frac{1}{2}\|\bB - \bV\|_F^2 + G(\bB) 
+\textnormal{prox}_{G}(\bV) = \textnormal{arg} \underset{\bB}{ \textnormal{ min } } \frac{1}{2}\|\bB - \bV\|_F^2 + G(\bB)
 \end{eqnarray}
-In the following theorem, we solve for the proximity operator of GrOWL in terms of the proximity of OWL. For the exact formulation of $\textnormal{prox}_{\Omega_{\bw}}$, see \cite{candes13}, \cite{ZengFigueiredo2014}.
+In the following theorem, we solve for the proximity operator of GrOWL
+in terms of the proximity of OWL. For the exact formulation of
+$\textnormal{prox}_{\Omega_{\bw}}$, see \citet{candes13} and \citet{ZengFigueiredo2014}.
 
 \begin{theorem} Let $\tilde{v}_i = \| \bv_{i \a}\|$ for $i = 1, \cdots, p$. Then
 $\textnormal{prox}_{G}(\bV) = \widehat \bV$, where $i$-th row of $\widehat \bV$ is

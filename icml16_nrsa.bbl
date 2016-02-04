@@ -1,0 +1,109 @@
+\begin{thebibliography}{16}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Antani et~al.(2002)Antani, Kasturi, and Jain]{antani02}
+Antani, Sameer, Kasturi, Rangachar, and Jain, Ramesh.
+\newblock A survey on the use of pattern recognition methods for abstraction,
+  indexing and retrieval of images and video.
+\newblock \emph{Pattern recognition}, 35\penalty0 (4):\penalty0 945--965, 2002.
+
+\bibitem[Bogdan et~al.(2013)Bogdan, Berg, Su, and Candes]{candes13}
+Bogdan, Malgorzata, Berg, Ewout van~den, Su, Weijie, and Candes, Emmanuel.
+\newblock Statistical estimation and testing via the sorted l1 norm.
+\newblock \emph{arXiv preprint arXiv:1310.1969}, 2013.
+
+\bibitem[Bondell \& Reich(2008)Bondell and Reich]{oscar}
+Bondell, Howard~D and Reich, Brian~J.
+\newblock Simultaneous regression shrinkage, variable selection, and supervised
+  clustering of predictors with oscar.
+\newblock \emph{Biometrics}, 64\penalty0 (1):\penalty0 115--123, 2008.
+
+\bibitem[Figueiredo \& Nowak(2014)Figueiredo and Nowak]{owl}
+Figueiredo, Mario~AT and Nowak, Robert~D.
+\newblock Sparse estimation with strongly correlated variables using ordered
+  weighted l1 regularization.
+\newblock \emph{arXiv preprint arXiv:1409.4005}, 2014.
+
+\bibitem[Harm \& Seidenberg(2004)Harm and Seidenberg]{HarmSeidenberg04}
+Harm, Michael~W and Seidenberg, Mark~S.
+\newblock Computing the meanings of words in reading: cooperative division of
+  labor between visual and phonological processes.
+\newblock \emph{Psychological review}, 111\penalty0 (3):\penalty0 662, 2004.
+
+\bibitem[Kriegeskorte et~al.(2006)Kriegeskorte, Goebel, and
+  Bandettini]{searchlight}
+Kriegeskorte, Nikolaus, Goebel, Rainer, and Bandettini, Peter.
+\newblock Information-based functional brain mapping.
+\newblock \emph{Proceedings of the National Academy of Sciences of the United
+  States of America}, 103\penalty0 (10):\penalty0 3863--3868, 2006.
+
+\bibitem[Kriegeskorte et~al.(2008)Kriegeskorte, Mur, and Bandettini]{RSA}
+Kriegeskorte, Nikolaus, Mur, Marieke, and Bandettini, Peter.
+\newblock Representational similarity analysis--connecting the branches of
+  systems neuroscience.
+\newblock \emph{Frontiers in systems neuroscience}, 2, 2008.
+
+\bibitem[Lounici et~al.(2009)Lounici, Pontil, Tsybakov, and Van
+  De~Geer]{lounici}
+Lounici, Karim, Pontil, Massimiliano, Tsybakov, Alexandre~B, and Van De~Geer,
+  Sara.
+\newblock Taking advantage of sparsity in multi-task learning.
+\newblock \emph{arXiv preprint arXiv:0903.1468}, 2009.
+
+\bibitem[Lounici et~al.(2011)Lounici, Pontil, Van De~Geer, and
+  Tsybakov]{vandegeer}
+Lounici, Karim, Pontil, Massimiliano, Van De~Geer, Sara, and Tsybakov,
+  Alexandre~B.
+\newblock Oracle inequalities and optimal inference under group sparsity.
+\newblock \emph{The Annals of Statistics}, pp.\  2164--2204, 2011.
+
+\bibitem[McRae et~al.(2005)McRae, Cree, Seidenberg, and
+  McNorgan]{mcrae2005semantic}
+McRae, Ken, Cree, George~S, Seidenberg, Mark~S, and McNorgan, Chris.
+\newblock Semantic feature production norms for a large set of living and
+  nonliving things.
+\newblock \emph{Behavior research methods}, 37\penalty0 (4):\penalty0 547--559,
+  2005.
+
+\bibitem[Obozinski et~al.(2011)Obozinski, Wainwright, and Jordan]{obo11}
+Obozinski, Guillaume, Wainwright, Martin~J, and Jordan, Michael~I.
+\newblock Support union recovery in high-dimensional multivariate regression.
+\newblock \emph{The Annals of Statistics}, pp.\  1--47, 2011.
+
+\bibitem[Parikh \& Boyd(2013)Parikh and Boyd]{prox}
+Parikh, Neal and Boyd, Stephen.
+\newblock Proximal algorithms.
+\newblock \emph{Foundations and Trends in optimization}, 1\penalty0
+  (3):\penalty0 123--231, 2013.
+
+\bibitem[Plaut et~al.(1996)Plaut, McClelland, Seidenberg, and
+  Patterson]{PlautETAL96}
+Plaut, David~C, McClelland, James~L, Seidenberg, Mark~S, and Patterson,
+  Karalyn.
+\newblock Understanding normal and impaired word reading: computational
+  principles in quasi-regular domains.
+\newblock \emph{Psychological review}, 103\penalty0 (1):\penalty0 56, 1996.
+
+\bibitem[Tversky \& Gati(1982)Tversky and Gati]{similarity}
+Tversky, Amos and Gati, Itamar.
+\newblock Similarity, separability, and the triangle inequality.
+\newblock \emph{Psychological review}, 89\penalty0 (2):\penalty0 123, 1982.
+
+\bibitem[Zeng et~al.(2014)Zeng, Figueiredo, et~al.]{ZengFigueiredo2014}
+Zeng, Xiangrong, Figueiredo, Mario, et~al.
+\newblock The atomic norm formulation of oscar regularization with application
+  to the frank-wolfe algorithm.
+\newblock In \emph{Proceedings of the European Signal Processing Conference,
+  Lisbon, Portugal}, 2014.
+
+\bibitem[Zou \& Hastie(2005)Zou and Hastie]{EN}
+Zou, Hui and Hastie, Trevor.
+\newblock Regularization and variable selection via the elastic net.
+\newblock \emph{Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)}, 67\penalty0 (2):\penalty0 301--320, 2005.
+
+\end{thebibliography}

@@ -4,11 +4,11 @@ populations, with different populations encoding different kinds of representati
 structure and communicating this structure to other network components. Extensive research
 over the past several years has focused on testing such hypotheses using data from
 functional brain imaging techniques such as fMRI. The best-known approach in this vein has
-been \emph{Representational Similarity Analysis} (RSA)~\cite{RSA}, which seeks to discover
+been \emph{Representational Similarity Analysis} \citep[RSA;][]{RSA}, which seeks to discover
 brain regions whose activity encodes the known psychophysical similarities among some set
 of stimuli. RSA is typically applied either to a specific brain region of interest (ROI)
 or to many localized regions throughout the brain in process called {\em searchlight
-analysis}~\cite{searchlight}. For a given region, RSA computes the cosine distances
+analysis} \citep{searchlight}. For a given region, RSA computes the cosine distances
 between the evoked responses for all stimulus pairs. The resulting neural dissimilarity
 matrix is correlated with a target matrix of known psychophysical distances amongst the
 stimuli. If these correlations are reliably non-zero, this suggests the corresponding
@@ -26,7 +26,7 @@ appear to jointly encode similarity information.
 Network RSA (NRSA) is summarized as follows (see Sections~\ref{wbrsa1}~and~\ref{wbrsa2}
 for further details). Consider a set of $n$ items and suppose we are given an $n \times
 n$ similarity matrix $\bS$, where the $ij$-th element $\bS_{ij}$ is the known
-psychophysical similarity \cite{similarity} between item $i$ and item $j$. For example,
+psychophysical similarity \citep{similarity} between item $i$ and item $j$. For example,
 these may come from human judgments of perceptual similarity between pairs of stimuli.
 RSA is based on the hypothesis that there exists a set of voxels whose correlations across
 stimuli encode the similarities in $\bS$, as depicted in Figure~\ref{fig.fitting}.
@@ -36,19 +36,18 @@ stimuli encode the similarities in $\bS$, as depicted in Figure~\ref{fig.fitting
     \includegraphics[width=0.5\textwidth]{figures/WRSA.pdf}
   \caption{Representational Similarity Analysis. Traditional RSA methods consider only
     localized brain networks, such as specific regions of interest or spherical clusters
-    of the cortex (upper left)~\cite{RSA,searchlight}. We propose a new {\em Network} RSA
+    of the cortex (upper left). We propose a new {\em Network} RSA
     (NRSA) method that can potentially identify non-local brain networks that encode
     similarity information (lower left). Within a set of voxels $\Omega$ (localized or
     non-local), the correlations between the activation patterns resulting from different
-    stimuli approximate (perceptual) similarities between the stimuli. } \label{Fig:WRSA}
-  \label{fig.fitting}
+    stimuli approximate (perceptual) similarities between the stimuli. \label{fig.fitting}}
 \end{figure}
 
 Let $\bX \in \R^{n\times p}$ denote a matrix of voxel activations.
 Each row corresponds to activations in all $p$ voxels in response to a specific stimulus,
 and each column corresponds to the activations in specific voxel to the $n$ different
-stimuli. Our generalized notion of RSA, which encompasses conventional ROI \cite{RSA} and
-searchlight \cite{searchlight} approaches, involves finding a sparse symmetric positive
+stimuli. Our generalized notion of RSA, which encompasses conventional ROI \citep{RSA} and
+searchlight \citep{searchlight} approaches, involves finding a sparse symmetric positive
 semi-definite matrix $\bW\in \R^{p\times p}$ such that
 
 $$\bS \ \approx \bX \bW \bX^T \ .$$
@@ -93,7 +92,6 @@ for this, the optimization above can be modified to obtain sparse and low-rank s
 as described next.
 
 
-
 \section{Learning Similarity Encodings via Group Lasso}
 
 Consider the group lasso optimization
@@ -107,7 +105,7 @@ $\lambda>0$ is an adjustable weight on the sparsity-promoting regularizer
 $\|\bB\|_{1,2}$, which is defined as follows. The rows of $\bB$ are denoted by
 $\bbeta_{i\a}$, $i=1,\dots,p$, and the norm
 $\|\bB\|_{1,2} \ = \ \sum_{i=1}^n \|\bbeta_{i\a}\|_2$. This encourages solutions with only
-a few nonzero rows in $\bB$ \cite{obo11,lounici,vandegeer}.
+a few nonzero rows in $\bB$ \citep{obo11,lounici,vandegeer}.
 
 The main technical innovation in this paper is a new approach to the group lasso that is
 designed to cope with strongly correlated covariates (\ie cases in which certain columns
@@ -118,7 +116,7 @@ data matrix $\bX$ are highly correlated. Group lasso selects one of the correspo
 in $\bB$ (row $5$), whereas GrOWL correctly selects both rows $5$ and $7$.
 
 In the standard (single-task) regression problem, this issue has been tackled using many
-techniques, including the elastic net \cite{EN}, OSCAR \cite{oscar} and OWL \cite{owl},
+techniques, including the elastic net \citep{EN}, OSCAR \citep{oscar} and OWL \citep{owl},
 and others. We propose a generalization of the recently proposed Ordered Weighted
 $\ell_1$ (OWL) approach to the multi-task setting, and thus call our new approach Group
 OWL (GrOWL). We show that GrOWL shares many of the desirable features of the OWL method,
@@ -136,6 +134,5 @@ predictions.
     \centering
     \includegraphics[width=0.6\linewidth]{figures/sim3.png}
     \qquad
-   \caption{A comparison of group lasso and grOWL optimization solutions with correlated columns in $\bX$ showing that GrOWL selects relevant features (row 5 and 7) even if they happen to be strongly correlated and automatically cluster them by setting the corresponding coefficient rows to be equal (or nearly equal).}
-    \label{Fig:sim}
+   \caption{A comparison of group lasso and grOWL optimization solutions with correlated columns in $\bX$ showing that GrOWL selects relevant features (row 5 and 7) even if they happen to be strongly correlated and automatically cluster them by setting the corresponding coefficient rows to be equal (or nearly equal). \label{Fig:sim}}
   \end{figure}

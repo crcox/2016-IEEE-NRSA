@@ -1,7 +1,6 @@
 We next consider the application of group lasso and GrOWL to the discovery of similarity
 structure in neural responses measured by fMRI across the whole brain while participants
-perform a cognitive task. As with the well-known searchlight RSA (\cite{RSA},
-\cite{similarity}), we begin with a measurement of the $n \times n $ similarities existing
+perform a cognitive task. As with the well-known searchlight RSA \citep{RSA,similarity}), we begin with a measurement of the $n \times n $ similarities existing
 amongst a set of $n$ items in some cognitive domain. Using fMRI, we measure the neural
 responses evoked by each item at the scale of single voxels (3mm cubes), and treat these
 $p$ voxels as features of the $n$ items. We then compute a rank-$r$ approximation of the
@@ -31,7 +30,7 @@ To answer these questions, we applied the approach to discover voxels that work 
 the visual or semantic similarity similarities existing amongst a set of line drawings of
 common objects. We chose this task and dataset because (a) there exist well-understood
 methods for objectively measuring the degree of visual similarity amongst such items
-\cite{antani02} and (b) it is well known that visual similarity is encoded by neural
+\citep{antani02} and (b) it is well known that visual similarity is encoded by neural
 responses in occipital and posterior temporal cortices, (c) there are well established
 feature-norming datasets that permit validated estimates of semantic similarity, and (d)
 semantic similarity is expected to be encoded by different areas than those that encode visual similarity in the brain.
@@ -68,7 +67,7 @@ were provided with each name and asked to list all the features and qualities th
 mind. For example, for the word ``bird'' a paricipant might list ``has a beak'', ``makes a
 nest'', ``lays eggs'', and ``can fly''. Collecting such responses for each word results in
 a word by feature matrix, and the covariance among features associated with each word can
-be used as an estimate of semantic structure (\eg, \cite{mcrae2005semantic}). These feature norms were obtained by the Neuroscience and Aphasia Research Unit in
+be used as an estimate of semantic structure \citep[\eg][]{mcrae2005semantic}. These feature norms were obtained by the Neuroscience and Aphasia Research Unit in
 Manchester, UK. We computed the cosine distance among the feature vectors for each of the 37 names
 and chose $r = 8$ in this case to attain $\|\bS - \bY\bY^T\|_F \leq 0.3$.
 
