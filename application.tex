@@ -1,6 +1,7 @@
 We next consider the application of group lasso and GrOWL to the discovery of similarity
 structure in neural responses measured by fMRI across the whole brain while participants
-perform a cognitive task. As with the well-known searchlight RSA \citep{RSA,similarity}), we begin with a measurement of the $n \times n $ similarities existing
+perform a cognitive task. As with the well-known searchlight RSA \citep{RSA},
+we begin with a measurement of the $n \times n $ similarities existing
 amongst a set of $n$ items in some cognitive domain. Using fMRI, we measure the neural
 responses evoked by each item at the scale of single voxels (3mm cubes), and treat these
 $p$ voxels as features of the $n$ items. We then compute a rank-$r$ approximation of the
@@ -19,29 +20,45 @@ constrained to be sparse, most voxels will receive coefficients of zero, and the
 of non-zero coefficients can be taken as evidence that the corresponding voxel encodes
 information important to representing the target similarity structure.
 
-The current experiment aims to answer four questions. (1) Does either approach learn a
-model from whole-brain fMRI that can accurately predict the pairwise similarities among
-stimuli? (2) Does group lasso or GrOWL learn a more accurate model? (3) Do the fitted
-models identify voxels in areas that are consistent with what is known about neural
-representations? (4) Do the discovered networks differ when modeling different kinds of
-similarity structure among the same items?
+The current experiment aims to answer
+\ifdefined\SEMANTIC
+four questions.
+\else
+three questions.
+\fi%
+(1) Does either approach learn a model from whole-brain fMRI that can accurately predict
+the pairwise similarities among stimuli?
+(2) Does group lasso or GrOWL learn a more accurate model?
+(3) Do the fitted models identify voxels in areas that are consistent with what is known
+about neural representations?
+\ifdefined\SEMANTIC
+(4) Do the discovered networks differ when modeling different kinds of similarity structure
+among the same items?
+\fi%
 
 To answer these questions, we applied the approach to discover voxels that work to encode
 the visual or semantic similarity similarities existing amongst a set of line drawings of
-common objects. We chose this task and dataset because (a) there exist well-understood
-methods for objectively measuring the degree of visual similarity amongst such items
-\citep{antani02} and (b) it is well known that visual similarity is encoded by neural
-responses in occipital and posterior temporal cortices, (c) there are well established
-feature-norming datasets that permit validated estimates of semantic similarity, and (d)
-semantic similarity is expected to be encoded by different areas than those that encode visual similarity in the brain.
+common objects. We chose this task and dataset because
+(a) there exist well-understood methods for objectively measuring the degree of visual
+similarity amongst such items \citep{antani02} and
+\ifdefined\SEMANTIC
+(b) it is well known that visual similarity is encoded by neural responses in occipital and
+posterior temporal cortices,
+(c) there are well established feature-norming datasets that permit validated estimates of
+semantic similarity, and
+(d) semantic similarity is expected to be encoded by different areas than those that encode
+visual similarity in the brain
+\else
+(b) it is well known that visual similarity is encoded by neural responses in occipital and
+posterior temporal cortices.
+\fi%
 
 \subsection{fMRI dataset} The data were collected as part of a larger study from 23
 participants at the University of Manchester who were compensated for their time. Each
 participant viewed a series of line drawings depicting common objects while their brains
 were scanned with fMRI. The line drawings included 37 items, each repeated 4 times for a
 total of 148 unique stimulus events. At each trial participants pressed a button to
-indicate whether the item could fit in a ``wheely bin'' (a form of trash can common in the
-UK).
+indicate whether the item could fit in a trash can.
 Scans were collected in a sparse event-related design and underwent standard
 pre-processing to align functional images to the anatomy and to remove movement and
 scanner artifact and temporal drift. Responses to each stimulus event were estimated at
@@ -57,30 +74,30 @@ normalized to be of standard deviation equal to one and a column of ones was add
 bias correction.
 
 \subsubsection*{Target similarities}
-\textit{Visual similarities.} Each stimulus was a bitmap of a black-and-white line
-drawing. We took pairwise Chamfer distance as a proxy for inter-item visual
-dissimilarities. r = 3 is the smallest value to attain $\|\bS - \bY\bY^T\|_F \leq 0.2$.
-This $37 \times 3$ matrix $\bY$ was used as the target matrix for the analysis.
+\ifdefined\SEMANTIC
+% \textit{Visual similarities.}
+\fi%
+ Each stimulus was a bitmap of a black-and-white line
+ drawing. We took pairwise Chamfer distance as a proxy for inter-item visual
+ dissimilarities. r = 3 is the smallest value to attain $\|\bS - \bY\bY^T\|_F \leq 0.2$.
+ This $37 \times 3$ matrix $\bY$ was used as the target matrix for the analysis.
 
-\textit{Semantic similarities.} Each image depicted an easily namable object. Participants
-were provided with each name and asked to list all the features and qualities that come to
-mind. For example, for the word ``bird'' a paricipant might list ``has a beak'', ``makes a
-nest'', ``lays eggs'', and ``can fly''. Collecting such responses for each word results in
-a word by feature matrix, and the covariance among features associated with each word can
-be used as an estimate of semantic structure \citep[\eg][]{mcrae2005semantic}. These feature norms were obtained by the Neuroscience and Aphasia Research Unit in
-Manchester, UK. We computed the cosine distance among the feature vectors for each of the 37 names
-and chose $r = 8$ in this case to attain $\|\bS - \bY\bY^T\|_F \leq 0.3$.
+\ifdefined\SEMANTIC
+\textit{Semantic similarities.}
+Participants were provided with names of the items and
+asked to list all the features and qualities that come to mind. For example, for the
+word ``bird'' a participant might list ``has a beak'', ``lays eggs'', and ``can fly''.
+Collecting such responses for each word results in a word by feature matrix, and the
+covariance among features associated with each word can be used as an estimate of
+semantic structure. We used $r = 8$ in this case to attain $\|\bS - \bY\bY^T\|_F \leq
+0.3$.
+\fi%
 
-\subsubsection*{Model fitting}
-For each participant, training data were divided into 9 subsets containing 4-5 stimulus
-events each. One subset was selected as a final hold-out set. Models were then fit at each
-of 10 increasing values of $\lambda$ using 8-fold cross validation. At each fold we
-assessed the model using the Frobenius norm of the difference between the target $\bY$
-entries and the predicted $\hY = \bX\widehat{\bB}$ entries for hold-out items (henceforth
-the model error). We selected the $\lambda$ with the lowest mean error for each subject
-subjects, then fit a full model for each subject at this value and assessed it against the
-final hold-out set, considering the model error on hold-out items. We repeat this process
-for 9 different final hold-out sets.
+%Each stimulus is related to a set of features to create a word by feature matrix, where
+%each feature is something like ``has wings'' or ``can swim''. Each row is populated with
+%the number of times each feature is listed for that stimulus. The target semantic
+%similarity matrix is derived as the cosine distance among the vectors for each of the 37
+%names. We get $r = 8$ in this case to attain $\|\bS - \bY\bY^T\|_F \leq 0.3$.
 
 \begin{figure*}[!h]
 \centering
@@ -96,14 +113,16 @@ for 9 different final hold-out sets.
 \label{fig.error}
 \end{figure*}
 
-\subsection{Results}
+\subsubsection*{Model fitting}
+For each participant, training data were divided into 9 subsets containing 4-5 stimulus events each. One subset was selected as a final hold-out set. Models were then fit at each of 10 increasing values of $\lambda$ using 8-fold cross validation. At each fold we assessed the model using the Frobenius norm of the difference between the target $\bY$ entries and the predicted $\hY = \bX\widehat{\bB}$ entries for hold-out items (henceforth the model error). We selected the $\lambda$ with the lowest mean error for each subject, then fit a full model for each subject at this value and assessed it against the final hold-out set, considering the model error on hold-out items. We repeat this process for 9 different final hold-out sets.
 
+\subsection{Results}
 Figure \ref{fig.error}(a) shows performance on the final hold-out sets for each
 participant and each method, considering error between predicted ($\bY_z$) and actual
 dissimilarities ($\bY$). Both approaches show significantly non-random prediction. As in
-our simulations, the GrOWL-II shows somewhat better performance (lower error, higher
-correlation) though all methods show comparable prediction error. We also note that, as in
-the simulations, GrOWL-II selected almost double the number of voxels in each participant.
+our simulations, all methods show comparable prediction error. We also note that, as in
+the simulations, GrOWL-II selected almost double the number of voxels in each
+participant.
 
 Figure \ref{fig.error}(b) shows the locations of selected voxels (i.e., those with
 non-zero coefficients) across all 23 participants, mapped into a common anatomical space
@@ -116,34 +135,40 @@ than group lasso.
 
 \iffalse
 \begin{figure}[!h]
-\centering
-\includegraphics[width=0.4\textwidth]{figures/NW.png}%
-\caption{Network plot showing the top edges from the $\bW$ matrix for the best-performing parameterization of group LASSO (top) and GrOWL-II (bottom) in one subject. The thickness of the edges is proportional to the edge weights.}
-\label{fig.NW}
+  \centering
+    \includegraphics[width=0.4\textwidth]{figures/NW.png}%
+    \caption{Network plot showing the top edges from the $\bW$ matrix for the
+      best-performing parameterization of group LASSO (top) and GrOWL-II (bottom) in one
+      subject. The thickness of the edges is proportional to the edge weights.}
+    \label{fig.NW}
 \end{figure}
 \fi
 
-Figure \ref{fig.error}(c) shows the largest magnitude edges in the $\bW$ matrix for the
+Figure~\ref{fig.error}(c) shows the largest magnitude edges in the $\bW$ matrix for the
 best-performing parameterization of group LASSO (top) and GrOWL-II (bottom) in one
 subject. Two observations are of note. First, both methods uncover a similar network
-structure, with many interconnections in visual cortical regions and some edges connecting
-to anterior regions in frontal and temporal cortex. Second, as in the simulations,
-GrOWL-II reveals a much denser network. The results suggest the possibility that
-subregions of frontal and temporal cortex may, together with occipito-temporal cortex,
-participate in networks that serve to encode visual similarity structure.
+structure, with many interconnections in visual cortical regions and some edges
+connecting to anterior regions in frontal and temporal cortex. Second, as in the
+simulations, GrOWL-II reveals a much denser network. The results suggest the possibility
+that subregions of frontal and temporal cortex may, together with occipito-temporal
+cortex, participate in networks that serve to encode visual similarity structure.
 
+\ifdefined\SEMANTIC
 \begin{figure}[!h]
-\centering
-\includegraphics[width=0.48\textwidth]{figures/vissem.png}%
-\caption{Shows the locations of selected voxels (i.e., those with non-zero coefficients) across all 23 participants corresponding to the visual (top) and semantic (bottom) similarity structure. }
-\label{fig.vissem}
+  \centering
+    \includegraphics[width=0.48\textwidth]{figures/vissem.png}%
+    \caption{Shows the locations of selected voxels (i.e., those with non-zero
+      coefficients) across all 23 participants corresponding to the visual (top) and
+      semantic (bottom) similarity structure. }
+    \label{fig.vissem}
 \end{figure}
 
-Finally, Figure \ref{fig.vissem} shows the locations of selected voxels (i.e., those with
+Finally, Figure~\ref{fig.vissem} shows the locations of selected voxels (\ie, those with
 non-zero coefficients) across all 23 participants for a single cross validation attempt,
-corresponding to the visual (top) and semantic (bottom) similarity structure. NRSA picks
-voxels prominently in the occipital and posterior temporal cortices when modeling visual
+corresponding to the visual and semantic similarity structure. NRSA picks voxels
+prominently in the occipital and posterior temporal cortices when modeling visual
 structure, but in higher-order visual regions associated with object processing when
-modeling the semantic structure. This demonstrates that NRSA is sensitive to the structure
+modeling semantic structure. This demonstrates that NRSA is sensitive to the structure
 being modeled and that different brain networks feature prominently in simple visual and
 higher-level semantic representations.
+\fi%
