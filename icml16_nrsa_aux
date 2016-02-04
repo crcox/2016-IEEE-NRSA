@@ -46,11 +46,3 @@
 \newlabel{fig.roc}{{4}{7}}
 \bibstyle{icml2016}
 \bibdata{mainPaper}
-\newlabel{fig_first_case}{{5a}{9}}
-\newlabel{sub@fig_first_case}{{(a)}{a}}
-\newlabel{fig_second_case}{{5b}{9}}
-\newlabel{sub@fig_second_case}{{(b)}{b}}
-\newlabel{fig_third_case}{{5c}{9}}
-\newlabel{sub@fig_third_case}{{(c)}{c}}
-\newlabel{fig.error}{{5}{9}}
-\newlabel{fig.vissem}{{6}{9}}
